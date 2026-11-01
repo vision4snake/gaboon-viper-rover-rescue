@@ -1,0 +1,1005 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="snake_robot">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 -3.4694E-18 -6.245E-17" rpy="0 0 0" />
+      <mass value="4.1888E-09" />
+      <inertia ixx="1.6755E-17" ixy="0" ixz="0" iyy="1.6755E-17" iyz="0" izz="1.6755E-17" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="head_1_1">
+    <inertial>
+      <origin xyz="0.0230074927201534 1.7656264783561E-09 5.59397816575283E-05" rpy="0 0 0" />
+      <mass value="0.161461395879157" />
+      <inertia ixx="0.000172501998118047" ixy="4.75137641141824E-11" ixz="3.07114543019282E-07" iyy="9.95536876517277E-05" iyz="-3.15030875080898E-11" izz="0.000100264843837021" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/head_1_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/head_1_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_1_1" type="revolute">
+    <origin xyz="0.157599828919829 0.000597645827645828 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="head_1_1" />
+    <axis xyz="0 1 0" />
+  <limit lower="-1.04719666667" upper="1.04719666667" /></joint>
+  <link name="head_1_2">
+    <inertial>
+      <origin xyz="0.0230074927201534 1.7656264783561E-09 5.59397816575213E-05" rpy="0 0 0" />
+      <mass value="0.161461395879157" />
+      <inertia ixx="0.000172501998118047" ixy="4.75137641136803E-11" ixz="3.07114543019281E-07" iyy="9.95536876517277E-05" iyz="-3.15030875081087E-11" izz="0.000100264843837021" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/head_1_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/head_1_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_1_2" type="revolute">
+    <origin xyz="0.157599828919829 0.000597645827645828 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="head_1_2" />
+    <axis xyz="0 0 1" />
+  <limit lower="-0.4363319444444444" upper="0.4363319444444444" /></joint>
+  <link name="bowl_left_1">
+    <inertial>
+      <origin xyz="-0.0231274310037141 0.0278600622663657 1.58744009021022E-05" rpy="0 0 0" />
+      <mass value="0.0192202819782796" />
+      <inertia ixx="1.55860424548238E-05" ixy="7.12315199783147E-07" ixz="-1.50982830316189E-08" iyy="1.39862468555078E-05" iyz="2.02955668515617E-08" izz="4.0712601872848E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_2" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="head_1_2" />
+    <child link="bowl_left_1" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="bowl_right_1">
+    <inertial>
+      <origin xyz="-0.0238382340743922 -0.0288189458594307 4.19327145326012E-05" rpy="0 0 0" />
+      <mass value="0.0192400757079254" />
+      <inertia ixx="1.46289723092054E-05" ixy="-7.18550939543218E-07" ixz="-3.68709862158424E-09" iyy="1.34581482764249E-05" iyz="-1.56439578129119E-08" izz="3.78088988325888E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_3" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="head_1_2" />
+    <child link="bowl_right_1" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="body_1">
+    <inertial>
+      <origin xyz="-0.00699999999999999 0.0289981859009033 -0.00139818590090296" rpy="0 0 0" />
+      <mass value="0.0294789878336647" />
+      <inertia ixx="1.19720194337335E-05" ixy="8.25186667930353E-08" ixz="8.25186667930349E-08" iyy="7.0714574041793E-06" iyz="-8.0247466156933E-07" izz="7.0714574041793E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_4" type="revolute">
+    <origin xyz="-0.02615 -0.0276 0" rpy="0 0 0" />
+    <parent link="bowl_right_1" />
+    <child link="body_1" />
+    <axis xyz="0 -1 0" />
+  <limit lower="-1.04719666667" upper="1.04719666667" /></joint>
+  <link name="connector_1">
+    <inertial>
+      <origin xyz="-0.0103516400471866 1.87101088858221E-08 0.00583011528182215" rpy="0 0 0" />
+      <mass value="0.00576712014506717" />
+      <inertia ixx="6.46852780504076E-07" ixy="-1.98219166469928E-12" ixz="7.76478803128193E-08" iyy="3.90255181772014E-07" iyz="3.44059876412574E-13" izz="9.49667000159868E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_5" type="revolute">
+    <origin xyz="-0.0139999999999996 0.0276000000000006 0.0276000000000003" rpy="0 0 0" />
+    <parent link="body_1" />
+    <child link="connector_1" />
+    <axis xyz="0 0 1" />
+  <limit lower="-0.4363319444444444" upper="0.4363319444444444" /></joint>
+  <link name="bowl_left_2">
+    <inertial>
+      <origin xyz="-0.0301258901930757 0.0278600235838671 -0.0275841613980998" rpy="0 0 0" />
+      <mass value="0.0192202157284068" />
+      <inertia ixx="1.55860276480938E-05" ixy="7.12315763611824E-07" ixz="-1.50967478427502E-08" iyy="1.39862416311169E-05" iyz="2.02992801515495E-08" izz="4.07125003352322E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_6" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_1" />
+    <child link="bowl_left_2" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="connector_1_2">
+    <inertial>
+      <origin xyz="-0.0102347088833945 -1.90032327755663E-08 -0.0608348831601008" rpy="0 0 0" />
+      <mass value="0.005972331601044" />
+      <inertia ixx="6.62720395338883E-07" ixy="1.99584839405019E-12" ixz="-8.11895284773212E-08" iyy="3.93488120681007E-07" iyz="4.65953432632593E-13" izz="9.5190227166847E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_1_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_1_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_7" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="bowl_left_2" />
+    <child link="connector_1_2" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="bowl_right_2">
+    <inertial>
+      <origin xyz="-0.030836690144564 -0.0288189458594221 -0.0275580672854487" rpy="0 0 0" />
+      <mass value="0.0192400757079047" />
+      <inertia ixx="1.46289723091945E-05" ixy="-7.18550939543198E-07" ixz="-3.6870986216505E-09" iyy="1.34581482764163E-05" iyz="-1.56439578109517E-08" izz="3.7808898832557E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_8" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_1" />
+    <child link="bowl_right_2" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="body_2">
+    <inertial>
+      <origin xyz="-0.00700000000000025 0.0289981859009033 -0.00139818590090281" rpy="0 0 0" />
+      <mass value="0.0294789878336648" />
+      <inertia ixx="1.19720194337335E-05" ixy="8.25186667930347E-08" ixz="8.25186667930344E-08" iyy="7.0714574041793E-06" iyz="-8.02474661569331E-07" izz="7.0714574041793E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_9" type="revolute">
+    <origin xyz="-0.0331484560701701 -0.0276000000000001 -0.0276" rpy="0 0 0" />
+    <parent link="bowl_right_2" />
+    <child link="body_2" />
+    <axis xyz="0 -1 0" />
+  <limit lower="-1.04719666667" upper="1.04719666667" /></joint>
+  <link name="connector_2">
+    <inertial>
+      <origin xyz="-0.0103516400471866 1.8710108892761E-08 0.00583011528182216" rpy="0 0 0" />
+      <mass value="0.00576712014506716" />
+      <inertia ixx="6.46852780504076E-07" ixy="-1.98219166486477E-12" ixz="7.76478803128169E-08" iyy="3.9025518177202E-07" iyz="3.440598758047E-13" izz="9.49667000159868E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_10" type="revolute">
+    <origin xyz="-0.014000000000001 0.0276000000000003 0.0276000000000005" rpy="0 0 0" />
+    <parent link="body_2" />
+    <child link="connector_2" />
+    <axis xyz="0 0 1" />
+  <limit lower="-0.4363319444444444" upper="0.4363319444444444" /></joint>
+  <link name="bowl_left_3">
+    <inertial>
+      <origin xyz="-0.0301258907233121 0.027859993140685 -0.0275841819854671" rpy="0 0 0" />
+      <mass value="0.0192201458770263" />
+      <inertia ixx="1.55860024082627E-05" ixy="7.12316207947545E-07" ixz="-1.50970313747553E-08" iyy="1.39862226322109E-05" iyz="2.030253288478E-08" izz="4.07124344143455E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_11" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_2" />
+    <child link="bowl_left_3" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="connector_2_2">
+    <inertial>
+      <origin xyz="-0.0102347088833939 -1.90032324876022E-08 -0.0608348831601009" rpy="0 0 0" />
+      <mass value="0.005972331601044" />
+      <inertia ixx="6.62720395338872E-07" ixy="1.99584839505224E-12" ixz="-8.11895284773248E-08" iyy="3.93488120680996E-07" iyz="4.65953432172784E-13" izz="9.51902271668468E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_2_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_2_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_12" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="bowl_left_3" />
+    <child link="connector_2_2" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="bowl_right_3">
+    <inertial>
+      <origin xyz="-0.0308366901445649 -0.0288189458594234 -0.0275580672854458" rpy="0 0 0" />
+      <mass value="0.0192400757079075" />
+      <inertia ixx="1.4628972309198E-05" ixy="-7.18550939543812E-07" ixz="-3.68709862197279E-09" iyy="1.34581482764192E-05" iyz="-1.5643957811086E-08" izz="3.78088988325734E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_13" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_2" />
+    <child link="bowl_right_3" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="body_3">
+    <inertial>
+      <origin xyz="-0.0069999999999992 0.0289981859009032 -0.00139818590090276" rpy="0 0 0" />
+      <mass value="0.0294789878336648" />
+      <inertia ixx="1.19720194337335E-05" ixy="8.25186667930345E-08" ixz="8.25186667930345E-08" iyy="7.0714574041793E-06" iyz="-8.0247466156933E-07" izz="7.0714574041793E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_14" type="revolute">
+    <origin xyz="-0.0331484560701703 -0.0276 -0.0275999999999999" rpy="0 0 0" />
+    <parent link="bowl_right_3" />
+    <child link="body_3" />
+    <axis xyz="0 -1 0" />
+  <limit lower="-1.04719666667" upper="1.04719666667" /></joint>
+  <link name="connector_3">
+    <inertial>
+      <origin xyz="-0.0103516400471867 1.87101089066388E-08 0.00583011528182212" rpy="0 0 0" />
+      <mass value="0.00576712014506717" />
+      <inertia ixx="6.46852780504082E-07" ixy="-1.98219166530933E-12" ixz="7.76478803128165E-08" iyy="3.90255181772024E-07" iyz="3.44059875918804E-13" izz="9.49667000159869E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_15" type="revolute">
+    <origin xyz="-0.0139999999999995 0.0276000000000005 0.0276000000000005" rpy="0 0 0" />
+    <parent link="body_3" />
+    <child link="connector_3" />
+    <axis xyz="0 0 1" />
+  <limit lower="-0.4363319444444444" upper="0.4363319444444444" /></joint>
+  <link name="bowl_left_4">
+    <inertial>
+      <origin xyz="-0.0301258865570888 0.027860033155966 -0.027584211581939" rpy="0 0 0" />
+      <mass value="0.0192202448723033" />
+      <inertia ixx="1.55860410888744E-05" ixy="7.12314886525297E-07" ixz="-1.50965556209858E-08" iyy="1.39862523880165E-05" iyz="2.03062343594267E-08" izz="4.07125320332836E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_16" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_3" />
+    <child link="bowl_left_4" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="connector_3_2">
+    <inertial>
+      <origin xyz="-0.0102347088833939 -1.900323262638E-08 -0.0608176008698602" rpy="0 0 0" />
+      <mass value="0.005972331601044" />
+      <inertia ixx="6.62720395338863E-07" ixy="1.99584839449783E-12" ixz="-8.11895284773214E-08" iyy="3.93488120680987E-07" iyz="4.65953431974009E-13" izz="9.51902271668467E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_3_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_3_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_17" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="bowl_left_4" />
+    <child link="connector_3_2" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="bowl_right_4">
+    <inertial>
+      <origin xyz="-0.0308366901445647 -0.0288189458594233 -0.0275580672854459" rpy="0 0 0" />
+      <mass value="0.0192400757079075" />
+      <inertia ixx="1.46289723091981E-05" ixy="-7.185509395438E-07" ixz="-3.68709862193676E-09" iyy="1.34581482764193E-05" iyz="-1.5643957811077E-08" izz="3.78088988325736E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_18" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_3" />
+    <child link="bowl_right_4" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="body_4">
+    <inertial>
+      <origin xyz="-0.00699999999999973 0.0289981859009033 -0.00139818590090277" rpy="0 0 0" />
+      <mass value="0.0294789878336648" />
+      <inertia ixx="1.19720194337335E-05" ixy="8.25186667930354E-08" ixz="8.25186667930344E-08" iyy="7.0714574041793E-06" iyz="-8.02474661569332E-07" izz="7.0714574041793E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_19" type="revolute">
+    <origin xyz="-0.0331484560701701 -0.0276 -0.0276" rpy="0 0 0" />
+    <parent link="bowl_right_4" />
+    <child link="body_4" />
+    <axis xyz="0 -1 0" />
+  <limit lower="-1.04719666667" upper="1.04719666667" /></joint>
+  <link name="connector_4">
+    <inertial>
+      <origin xyz="-0.0103516400471867 1.87101088962305E-08 0.00583011528182215" rpy="0 0 0" />
+      <mass value="0.00576712014506715" />
+      <inertia ixx="6.46852780504078E-07" ixy="-1.98219166454886E-12" ixz="7.76478803128169E-08" iyy="3.90255181772017E-07" iyz="3.44059875473697E-13" izz="9.4966700015987E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_20" type="revolute">
+    <origin xyz="-0.0140000000000003 0.0276000000000006 0.0276000000000005" rpy="0 0 0" />
+    <parent link="body_4" />
+    <child link="connector_4" />
+    <axis xyz="0 0 1" />
+  <limit lower="-0.4363319444444444" upper="0.4363319444444444" /></joint>
+  <link name="bowl_left_5">
+    <inertial>
+      <origin xyz="-0.0301258899174904 0.0278600076931674 -0.0275842098947075" rpy="0 0 0" />
+      <mass value="0.0192202041135666" />
+      <inertia ixx="1.55860334554522E-05" ixy="7.12315887596656E-07" ixz="-1.50964641838898E-08" iyy="1.39862513405088E-05" iyz="2.03056135264569E-08" izz="4.07124610212601E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_21" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_4" />
+    <child link="bowl_left_5" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="connector_4_2">
+    <inertial>
+      <origin xyz="-0.0102347088833936 -1.90032326784217E-08 -0.0608176008698602" rpy="0 0 0" />
+      <mass value="0.005972331601044" />
+      <inertia ixx="6.62720395338898E-07" ixy="1.99584839458655E-12" ixz="-8.11895284773235E-08" iyy="3.93488120681021E-07" iyz="4.65953433081535E-13" izz="9.51902271668472E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_4_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_4_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_22" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="bowl_left_5" />
+    <child link="connector_4_2" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="bowl_right_5">
+    <inertial>
+      <origin xyz="-0.0308366901445647 -0.0288189458594234 -0.0275580672854457" rpy="0 0 0" />
+      <mass value="0.0192400757079074" />
+      <inertia ixx="1.46289723091979E-05" ixy="-7.18550939543795E-07" ixz="-3.68709862195621E-09" iyy="1.34581482764192E-05" iyz="-1.56439578111245E-08" izz="3.78088988325728E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_23" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_4" />
+    <child link="bowl_right_5" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="body_5">
+    <inertial>
+      <origin xyz="-0.00699999999999928 0.0289981859009032 -0.0013981859009029" rpy="0 0 0" />
+      <mass value="0.0294789878336648" />
+      <inertia ixx="1.19720194337335E-05" ixy="8.25186667930345E-08" ixz="8.25186667930349E-08" iyy="7.0714574041793E-06" iyz="-8.02474661569333E-07" izz="7.0714574041793E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_24" type="revolute">
+    <origin xyz="-0.0331484560701701 -0.0276 -0.0276" rpy="0 0 0" />
+    <parent link="bowl_right_5" />
+    <child link="body_5" />
+    <axis xyz="0 -1 0" />
+  <limit lower="-1.04719666667" upper="1.04719666667" /></joint>
+  <link name="connector_5">
+    <inertial>
+      <origin xyz="-0.0103516400471867 1.87101088754138E-08 0.00583011528182209" rpy="0 0 0" />
+      <mass value="0.00576712014506716" />
+      <inertia ixx="6.46852780504086E-07" ixy="-1.98219166444217E-12" ixz="7.7647880312814E-08" iyy="3.90255181772031E-07" iyz="3.44059875890615E-13" izz="9.49667000159871E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_25" type="revolute">
+    <origin xyz="-0.0139999999999998 0.0276000000000004 0.0276000000000004" rpy="0 0 0" />
+    <parent link="body_5" />
+    <child link="connector_5" />
+    <axis xyz="0 0 1" />
+  <limit lower="-0.4363319444444444" upper="0.4363319444444444" /></joint>
+  <link name="bowl_left_6">
+    <inertial>
+      <origin xyz="-0.0301258895292119 0.0278600117879187 -0.0275842058710061" rpy="0 0 0" />
+      <mass value="0.019220186965069" />
+      <inertia ixx="1.55860166137064E-05" ixy="7.12315909365285E-07" ixz="-1.50964693124768E-08" iyy="1.39862326434245E-05" iyz="2.03056661249613E-08" izz="4.07124792438106E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_26" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_5" />
+    <child link="bowl_left_6" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="connector_5_2">
+    <inertial>
+      <origin xyz="-0.0102347088833936 -1.90032326402578E-08 -0.0608176008698602" rpy="0 0 0" />
+      <mass value="0.005972331601044" />
+      <inertia ixx="6.62720395338883E-07" ixy="1.99584839440809E-12" ixz="-8.11895284773216E-08" iyy="3.93488120681012E-07" iyz="4.65953432394778E-13" izz="9.51902271668467E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_5_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_5_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_27" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="bowl_left_6" />
+    <child link="connector_5_2" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="bowl_right_6">
+    <inertial>
+      <origin xyz="-0.0308366901445646 -0.0288189458594235 -0.0275580672854462" rpy="0 0 0" />
+      <mass value="0.0192400757079075" />
+      <inertia ixx="1.46289723091979E-05" ixy="-7.18550939543787E-07" ixz="-3.68709862190429E-09" iyy="1.34581482764191E-05" iyz="-1.56439578110102E-08" izz="3.78088988325729E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_28" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_5" />
+    <child link="bowl_right_6" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="body_6">
+    <inertial>
+      <origin xyz="-0.00699999999999967 0.0289981859009033 -0.00139818590090279" rpy="0 0 0" />
+      <mass value="0.0294789878336648" />
+      <inertia ixx="1.19720194337335E-05" ixy="8.25186667930344E-08" ixz="8.25186667930351E-08" iyy="7.0714574041793E-06" iyz="-8.02474661569332E-07" izz="7.0714574041793E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/body_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_29" type="revolute">
+    <origin xyz="-0.03314845607017 -0.0276000000000001 -0.0276" rpy="0 0 0" />
+    <parent link="bowl_right_6" />
+    <child link="body_6" />
+    <axis xyz="0 -1 0" />
+  <limit lower="-1.04719666667" upper="1.04719666667" /></joint>
+  <link name="connector_6">
+    <inertial>
+      <origin xyz="-0.0103516400471866 1.87101089031694E-08 0.00583011528182213" rpy="0 0 0" />
+      <mass value="0.00576712014506716" />
+      <inertia ixx="6.46852780504083E-07" ixy="-1.98219166485772E-12" ixz="7.76478803128182E-08" iyy="3.90255181772022E-07" iyz="3.44059875680098E-13" izz="9.49667000159865E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_30" type="revolute">
+    <origin xyz="-0.0140000000000002 0.0276000000000005 0.0276000000000005" rpy="0 0 0" />
+    <parent link="body_6" />
+    <child link="connector_6" />
+    <axis xyz="0 0 1" />
+  <limit lower="-0.4363319444444444" upper="0.4363319444444444" /></joint>
+  <link name="bowl_right_7">
+    <inertial>
+      <origin xyz="-0.0308182789642751 -0.0287816933042738 -0.0275766097124853" rpy="0 0 0" />
+      <mass value="0.0191620588530309" />
+      <inertia ixx="1.46622883850967E-05" ixy="-7.2099490109977E-07" ixz="8.70245602743964E-11" iyy="1.34790302119686E-05" iyz="7.89443968311452E-10" izz="3.79286324525666E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_7.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_right_7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_31" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_6" />
+    <child link="bowl_right_7" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="connector_6_2">
+    <inertial>
+      <origin xyz="-0.0102347088833938 -1.90032326298495E-08 -0.0608176008698602" rpy="0 0 0" />
+      <mass value="0.005972331601044" />
+      <inertia ixx="6.62720395338874E-07" ixy="1.99584839403786E-12" ixz="-8.11895284773198E-08" iyy="3.93488120680995E-07" iyz="4.6595343294501E-13" izz="9.51902271668472E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_6_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/connector_6_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_32" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="bowl_right_7" />
+    <child link="connector_6_2" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="bowl_left_7">
+    <inertial>
+      <origin xyz="-0.0301258867761263 0.0278600493292895 -0.0275840865158069" rpy="0 0 0" />
+      <mass value="0.0192202359315148" />
+      <inertia ixx="1.55860193019937E-05" ixy="7.12314938991275E-07" ixz="-1.50992676970808E-08" iyy="1.39862253559544E-05" iyz="2.02860677342596E-08" izz="4.07125835739773E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_7.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/bowl_left_7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_33" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="connector_6" />
+    <child link="bowl_left_7" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="tail_1">
+    <inertial>
+      <origin xyz="-0.017806 -0.029775 -4.0032E-07" rpy="0 0 0" />
+      <mass value="0.025859" />
+      <inertia ixx="1.3988E-05" ixy="-3.3561E-10" ixz="6.5656E-11" iyy="8.6757E-06" iyz="-1.1106E-10" izz="9.12E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/tail_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snake_robot/meshes/tail_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_34" type="revolute">
+    <origin xyz="-0.0331484560701699 0.0292023541723514 -0.0275827177097593" rpy="0 0 0" />
+    <parent link="bowl_left_7" />
+    <child link="tail_1" />
+    <axis xyz="0 1 0" />
+  <limit lower="-1.04719666667" upper="1.04719666667" /></joint>
+</robot>
