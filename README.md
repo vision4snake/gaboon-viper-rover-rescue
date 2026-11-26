@@ -67,7 +67,7 @@ The terrain generator uses Blender with `procgen_assets.py`, loading `geometry.p
 From the repository root, run:
 
 ```powershell
-.\generate-terrain.ps1 -Blender 'D:\downloads\blender.exe' -OutputDirectory 'D:\terrain\outputs_20250804'
+.\generate-terrain.ps1 -Blender 'D:\downloads\blender.exe' -OutputDirectory 'D:\terrain\generated_terrain'
 ```
 
 The script uses these parameters:
@@ -86,7 +86,7 @@ The script uses these parameters:
 | Number of assets | 500 |
 | Output format | `.usd` |
 
-Generated terrain assets are stored separately. The generation output `outputs_20250804` and the composed evaluation scene `outputs_eval2/combined.usd` serve different purposes; evaluation also requires the scene composition and its referenced assets.
+Generated terrain assets are stored separately. The generation output `generated_terrain` and the composed evaluation scene `outputs_eval2/combined.usd` serve different purposes; evaluation also requires the scene composition and its referenced assets.
 
 ## Licenses
 
