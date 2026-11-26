@@ -1,36 +1,93 @@
-# Gaboon viper rover rescue — release preparation
+# Gaboon Viper Rover Rescue
 
-Private target: https://github.com/vision4snake/gaboon-viper-rover-rescue.git
+Research code for snake-robot reinforcement learning and procedural terrain generation associated with the Gaboon Viper Rover Rescue project.
 
-## Environment evidence
+## Repository structure
 
-`environment.yml` is a full Windows snapshot exported from `env_isaaclab` (Python 3.10.13), with the machine-specific prefix removed. It is not a minimal or validated installation specification. Create with `conda env create -f environment.yml`; environment resolution has not been tested. Local editable packages and simulator-provided extensions need separate installation.
+- `code/`: robot assets, task configurations, and training and evaluation scripts, including the bundled RSL-RL implementation.
+- `isaaclab-source/`: Isaac Lab framework source used by the project, including customized modules imported by the navigation task.
+- `terrain/`: procedural terrain generation source and its original license.
+- `environment.yml`: Windows Conda environment snapshot.
+- `requirements-isaacsim-bundled.txt`: package inventory from the local Isaac Sim bundled Python interpreter.
+- `generate-terrain.ps1`: PowerShell script for terrain generation.
 
-Important: the Conda environment contains Isaac Sim 4.5.0.0, whereas D:/isaac/isaacsim/VERSION reports 4.2.0-rc.18+release.16044.3b2ed111.gl. The supplied python.bat defaults to the simulator bundled interpreter unless PYTHONEXE is set. Activating Conda alone does not select its Python for this command. requirements-isaacsim-bundled.txt inventories packages visible to that bundled Python without simulator startup; runtime extensions are additional dependencies.
+## Software environment
 
-The copied parent Isaac Lab source reports version 1.2.0. It is included under isaaclab-source because navigation imports customized parent modules, rather than exclusively the extension's local modules. Original licenses are retained.
+The project uses Python 3.10 and NVIDIA Isaac Sim with Isaac Lab. The framework source in this repository reports Isaac Lab version 1.2.0.
 
-## Author-provided commands (original workstation)
+The recorded Conda environment uses Python 3.10.13, PyTorch 2.5.1+cu121, and NumPy 1.26.4. To create the recorded environment:
 
-Run from the original extension directory; these are recorded for provenance, not executed during packaging:
+```bat
+conda env create -f environment.yml
+conda activate env_isaaclab
+```
+
+The environment file records installed packages; Isaac Sim runtime extensions and local project packages require separate configuration. Use the bundled RSL-RL implementation for this project's PPO training.
+
+### Simulator interpreter
+
+The original workstation's simulator launcher is `D:\isaac\isaacsim\python.bat`, with Isaac Sim version `4.2.0-rc.18+release.16044.3b2ed111.gl`. The Conda snapshot also contains Isaac Sim 4.5.0.0 packages. These refer to separate installations: the supplied launcher defaults to Isaac Sim's bundled Python unless `PYTHONEXE` is set. Activating Conda does not by itself change that interpreter.
+
+## Local configuration
+
+Before running, configure source and asset paths for your installation. The source retains workstation-specific paths for the Isaac Lab extensions, robot USD assets, and terrain. Point the extension imports to `isaaclab-source/extensions/` and the robot assets to their locations under `code/`. Keep the customized framework modules on the Python import path.
+
+Run the following commands from `code/`, replacing the simulator launcher path with your local installation path.
+
+## Training
+
+```bat
+conda activate env_isaaclab
+D:\isaac\isaacsim\python scripts/rsl_rl/train.py --task Isaac-Navigation-Flat-Snake-Robot-v0 --num_envs 4096 --headless
+```
+
+The navigation task uses the bundled RSL-RL PPO implementation. Its configuration is located at:
+
+```text
+code/isaacLab/manipulation/tasks/Snake_robot/navigation/config/snake_robot/navigation_env_cfg.py
+```
+
+The current training configuration inherits a plane terrain.
+
+## Evaluation
 
 ```bat
 conda activate env_isaaclab
 D:\isaac\isaacsim\python scripts/rsl_rl/play.py --task Isaac-Navigation-Flat-Snake-Robot-Play-v0 --num_envs 64
-D:\isaac\isaacsim\python scripts/rsl_rl/train.py --task Isaac-Navigation-Flat-Snake-Robot-v0 --num_envs 4096 --headless
 ```
 
-Task configuration: code/isaacLab/manipulation/tasks/Snake_robot/navigation/config/snake_robot/navigation_env_cfg.py.
-Algorithm: locally bundled RSL-RL PPO; retain the bundled implementation rather than silently replacing it with a pip release.
+Evaluation requires a trained checkpoint in the configured log directory. Configure the run and checkpoint selection for the model to evaluate. Training logs and model checkpoints are stored separately from the source repository.
 
-## Terrain
+The evaluation configuration refers to `outputs_eval2/combined.usd`. Set this path to the evaluation scene on your machine and ensure its referenced USD assets and textures are available.
 
-terrain/ contains procedural generation Python sources and the original CC0 license. Generated assets have not been bundled. Author parameters: Seed=922, Scale=[5.0,4.0,0.25], Density=0.1, Flat Area Size=1.0, Rock Mesh Boolean=false; material MartianSurface; texture_resolution=4096; seed=922; num_assets=500; ext=.usd; output directory outputs_20250804. Use scripts/blender/procgen_assets.py with model/terrain/martian_surface_procgen/geometry.py and material.py as autorun scripts in Blender.
+## Procedural terrain generation
 
-Current training inherits a plane terrain. Play explicitly uses outputs_eval2/combined.usd. Generating outputs_20250804 is not by itself sufficient to reproduce that evaluation scene: asset selection/composition and referenced USD/textures must also be preserved.
+The terrain generator uses Blender with `procgen_assets.py`, loading `geometry.py` and `material.py` from `terrain/model/terrain/martian_surface_procgen/`.
 
-## Remaining release work
+From the repository root, run:
 
-This is an archival staging copy, not yet a portable validated release. Resolve absolute paths in the copy, verify the active runtime and checkpoint, collect the evaluation scene's referenced assets, check third-party license provenance, restore any required TXT resources omitted during initial filtering, and run a small simulation smoke test before publication. Do not launch the full 4096-environment training or 500-terrain generation as an installation check.
+```powershell
+.\generate-terrain.ps1 -Blender 'D:\downloads\blender.exe' -OutputDirectory 'D:\terrain\outputs_20250804'
+```
 
-No source files in the original project were edited. manifest.csv covers the initial extension copy only; newly included framework and terrain files are not covered by that initial manifest. No GitHub upload has been completed.
+The script uses these parameters:
+
+| Parameter | Value |
+| --- | --- |
+| Geometry node group | `MartianTerrain` |
+| Geometry seed | 922 |
+| Scale | [5.0, 4.0, 0.25] |
+| Density | 0.1 |
+| Flat area size | 1.0 |
+| Rock mesh boolean | false |
+| Material | `MartianSurface` |
+| Texture resolution | 4096 |
+| Generation seed | 922 |
+| Number of assets | 500 |
+| Output format | `.usd` |
+
+Generated terrain assets are stored separately. The generation output `outputs_20250804` and the composed evaluation scene `outputs_eval2/combined.usd` serve different purposes; evaluation also requires the scene composition and its referenced assets.
+
+## Licenses
+
+Original license files and source copyright notices are retained. See `ISAACLAB-LICENSE`, the licenses within `code/`, and `terrain/LICENSE-CC0` for the corresponding components.
